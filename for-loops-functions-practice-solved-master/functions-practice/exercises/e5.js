@@ -4,13 +4,15 @@
 // Array example: bankAccounts in /data/data.js
 // getAllClientNames(bankAccounts) => ['Kevin', 'Spenser']
 
-var bankAccounts = ['Kevin', 'Spenser'];
+import { bankAccountsNoPositiveBalance } from "../data/data.js";
 
 export function getAllClientNames(array) {
-  return bankAccounts;
+  return array.map((client) => client.name);
 }
 
-console.log(bankAccounts);
+const clientNames = getAllClientNames(bankAccountsNoPositiveBalance);
+console.log(clientNames);
+
 
 
 

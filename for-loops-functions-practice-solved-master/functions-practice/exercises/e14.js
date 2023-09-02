@@ -5,11 +5,14 @@
 // Array example: bankAccounts in /data/data.js
 // getClientsWithWrongBalance(bankAccounts) => [{ name: 'Name1', balance: 32, ... }, { name: 'Name2', balance: 3523, ... }]
 
-import { bankAccounts, bankAccountsNoPositiveBalance } from "../data/data.js";
+import { bankAccounts } from "../data/data.js";
 
 export function getClientsWithWrongBalance(array) {
   const wrongBalanceClients = array.filter((client) => {
-    return client.balance <= 0;
+    const calculatedBalance = (client.deposits || []).reduce((total, deposit) => total + deposit, 0) -
+      (client.withdrawals || []).reduce((total, withdrawal) => total + withdrawal, 0);
+
+    return client.balance !== calculatedBalance;
   });
 
   return wrongBalanceClients;
@@ -17,6 +20,7 @@ export function getClientsWithWrongBalance(array) {
 
 const clientsWithWrongBalance = getClientsWithWrongBalance(bankAccounts);
 console.log(clientsWithWrongBalance);
+
 
 
 

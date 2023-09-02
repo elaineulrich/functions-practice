@@ -9,13 +9,20 @@
  * */
 
 export function getAverage(array) {
-  const numbers = [22, 45, 2, 65];
-  const sum = numbers.reduce((acc, num) => acc + num, 0);
-  const average = sum / numbers.length;
+  let sum = 0;
+
+  for (let i = 0; i < array.length; i++) {
+    sum += array[i];
+  }
+
+  const average = sum / array.length;
   return average;
 }
 
-console.log(getAverage());
+const numbers = [22, 45, 2, 65];
+
+console.log(getAverage(numbers)); // Call the function with the 'numbers' array as an argument
+
 
 
 /** 

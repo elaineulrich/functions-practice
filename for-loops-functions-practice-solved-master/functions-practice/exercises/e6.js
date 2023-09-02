@@ -3,13 +3,19 @@
 // Array example: bankAccounts in /data/data.js
 // getClientWithNoMoney(bankAccounts) => ['Kevin', 'Jon']
 
-var bankAccounts = ['Kevin', 'Jon'];
+import { bankAccountsNoPositiveBalance } from "../data/data.js";
 
 export function getClientWithNoMoney(array) {
-  return bankAccounts;
+  // Filter accounts with a balance of 0 and then map to extract names
+  return array
+    .filter((client) => client.balance === 0)
+    .map((client) => client.name);
 }
 
-console.log(getClientWithNoMoney())
+const clientsWithZeroBalance = getClientWithNoMoney(bankAccountsNoPositiveBalance);
+console.log(clientsWithZeroBalance);
+
+
 
 
 

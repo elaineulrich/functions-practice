@@ -3,17 +3,20 @@
 // Array example: bankAccounts in /data/data.js
 // getClientsWithLetterInName(bankAccounts, 'e') => ['Kevin', 'Steven', ...]
 
-var bankAccounts = ['Kevin', 'Steven'];
+import { bankAccounts } from "../data/data.js";
+
 
 export function getClientsWithLetterInName(array, letter) {
   const clientsWithLetterInName = array
-    .filter((client) => client.toLowerCase().includes(letter.toLowerCase()));
+    .filter((client) => client.name.toLowerCase().includes(letter.toLowerCase()))
+    .map((client) => client.name);
 
   return clientsWithLetterInName;
 }
 
 const clientsWithLetterE = getClientsWithLetterInName(bankAccounts, 'e');
 console.log(clientsWithLetterE);
+
 
 
 // === TEST YOURSELF ===

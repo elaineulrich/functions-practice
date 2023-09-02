@@ -4,22 +4,28 @@
 // Array example: bankAccounts in /data/data.js
 // getAllWithdrawals(bankAccounts) => [3432, 0, 43242.34, 0, 23432]
 
-import { bankAccounts, bankAccountsNoPositiveBalance } from "../data/data.js";
+import { bankAccounts } from "../data/data.js";
 
 export function getAllWithdrawals(array) {
-  let allWithdrawals = [];
+  const withdrawalSums = [];
 
   for (const account of array) {
     if (account.withdrawals && Array.isArray(account.withdrawals)) {
-      allWithdrawals = allWithdrawals.concat(account.withdrawals);
+      // Calculate the sum of withdrawals for each account
+      const sum = account.withdrawals.reduce((total, withdrawal) => total + withdrawal, 0);
+      withdrawalSums.push(sum);
+    } else {
+      // If the account has no withdrawals, add 0 to the sums array
+      withdrawalSums.push(0);
     }
   }
 
-  return allWithdrawals;
+  return withdrawalSums;
 }
 
 const allWithdrawals = getAllWithdrawals(bankAccounts);
 console.log(allWithdrawals);
+
 
 
 // === TEST YOURSELF ===

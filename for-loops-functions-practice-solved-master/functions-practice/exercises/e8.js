@@ -8,7 +8,7 @@ import { bankAccounts, bankAccountsNoPositiveBalance } from "../data/data.js";
 
 export function getClientWithGreatestBalance(array) {
   let greatestBalanceClient = null;
-  let greatestBalance = -Infinity; 
+  let greatestBalance = -Infinity;
 
   for (const client of array) {
     if (client.balance > greatestBalance) {
@@ -21,6 +21,7 @@ export function getClientWithGreatestBalance(array) {
 }
 
 console.log(getClientWithGreatestBalance(bankAccounts));
+
 
 
 
