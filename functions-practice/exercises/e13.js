@@ -13,22 +13,26 @@ export function getAllAccountsWithSumsOfDepositsLess2000(array) {
   for (const account of array) {
     let sumOfDeposits = 0;
 
-    if (account.deposits && Array.isArray(account.deposits)) {
-      for (const deposit of account.deposits) {
-        sumOfDeposits += deposit;
+    // Check if deposits property exists and is truthy
+    if (account.deposits && typeof account.deposits === 'object' && account.deposits !== null) {
+      // Ensure deposits is an object and not null
+      // Iterate through deposits if it's an array
+      if (Object.prototype.toString.call(account.deposits) === '[object Array]') {
+        for (const deposit of account.deposits) {
+          sumOfDeposits += deposit;
+        }
       }
     }
 
     if (sumOfDeposits < 2000) {
       result.push(account);
-    } else if (!account.deposits || !Array.isArray(account.deposits)) {
+    } else if (!account.deposits || !(typeof account.deposits === 'object' && account.deposits !== null)) {
       result.push(account);
     }
   }
 
   return result;
 }
-
 
 
 
