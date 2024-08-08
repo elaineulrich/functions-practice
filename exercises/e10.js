@@ -16,15 +16,6 @@ export function getClientsWithLetterInName(array, letter) {
   return clientsWithLetterInName;
 }
 
-const letter = 'e';
-const clientsWithLetterE = [];
-const bankAccountsArray = bankAccounts;
-for (let i = 0; i < bankAccountsArray.length; i++) {
-  const clientName = bankAccountsArray[i].name;
-  if (clientName.toLowerCase().includes(letter.toLowerCase())) {
-    clientsWithLetterE.push(clientName);
-  }
-}
 
 
 

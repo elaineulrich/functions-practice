@@ -7,24 +7,21 @@
 import { bankAccounts } from "../data/data.js";
 
 export function getAllWithdrawals(array) {
-  const withdrawalSums = [];
-
-  for (let i = 0; i < array.length; i++) {
-    const account = array[i];
-    let sum = 0;
-
-    if (account.withdrawals && typeof account.withdrawals === 'object' && account.withdrawals !== null) {
-      if (Object.prototype.toString.call(account.withdrawals) === '[object Array]') {
-        for (let j = 0; j < account.withdrawals.length; j++) {
-          sum += account.withdrawals[j];
-        }
+  let userWithdrawals = [];
+  
+  for (let user of array) {
+    let userTotal = 0;
+    
+    if (user.withdrawals) {
+      for (let withdrawal of user.withdrawals) {
+        userTotal += withdrawal;
       }
     }
     
-    withdrawalSums.push(sum);
+    userWithdrawals.push(userTotal);
   }
 
-  return withdrawalSums;
+  return userWithdrawals;
 }
 
 

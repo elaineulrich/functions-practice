@@ -8,27 +8,19 @@
 import { bankAccounts, bankAccountsNoPositiveBalance } from "../data/data.js";
 
 export function getAllAccountsWithSumsOfDepositsLess2000(array) {
-  const result = [];
-
-  for (const account of array) {
-    let sumOfDeposits = 0;
-
-    if (account.deposits && typeof account.deposits === 'object' && account.deposits !== null) {
-      if (Object.prototype.toString.call(account.deposits) === '[object Array]') {
-        for (const deposit of account.deposits) {
-          sumOfDeposits += deposit;
-        }
+  let userDepositsUnder2000 = [];
+  for (let user of array) {
+    let userTotal = 0;
+    if (user.deposits) {
+      for (let deposit of user.deposits) {
+        userTotal += deposit;
+      
       }
     }
-
-    if (sumOfDeposits < 2000) {
-      result.push(account);
-    } else if (!account.deposits || !(typeof account.deposits === 'object' && account.deposits !== null)) {
-      result.push(account);
-    }
+    if (userTotal < 2000) userDepositsUnder2000.push(user);
   }
 
-  return result;
+  return userDepositsUnder2000;
 }
 
 

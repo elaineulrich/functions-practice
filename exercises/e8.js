@@ -9,12 +9,12 @@ import { bankAccounts, bankAccountsNoPositiveBalance } from "../data/data.js";
 export function getClientWithGreatestBalance(array) {
   let greatestBalanceClient = [array[0]];
 
-  for (client of array) {
-    if (client.balance > greatestBalance[0].balance) {
-      greatestBalance[0] = client;
+  for (let client of array) {
+    if (client.balance > greatestBalanceClient[0].balance) {
+      greatestBalanceClient[0] = client;
     }
   }
-  return greatestBalance;
+  return greatestBalanceClient;
 }
 
 

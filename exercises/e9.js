@@ -17,15 +17,6 @@ export function getClientsWithBalanceOverOneHundred(array) {
   return clientsWithBalanceOver100;
 }
 
-const clientsWithBalanceOver100 = [];
-const bankAccounts = bankAccountsNoPositiveBalance;
-for (let i = 0; i < bankAccounts.length; i++) {
-  const client = bankAccounts[i];
-  if (client.balance > 100) {
-    clientsWithBalanceOver100.push(client);
-  }
-}
-
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-9"
